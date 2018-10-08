@@ -7,6 +7,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
+import { IntroPageModule } from '../pages/intro/intro.module';
+import { ContasPageModule } from '../pages/contas/contas.module';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -14,7 +17,9 @@ import { HomePage } from '../pages/home/home';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IntroPageModule,
+    ContasPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
