@@ -13,7 +13,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let conta of listContas">
       <ion-item ion-item>
-        {{ conta.descricao }}
+        {{ conta.DESCRICAO }}
       </ion-item>
       <ion-item-options>
         <button ion-button color="danger"><ion-icon name="trash" outline></ion-icon></button>
@@ -21,8 +21,8 @@
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab bottom right>
-    <button ion-fab class="btn-add">
+  <ion-fab bottom right edge>
+    <button ion-fab  class="btn-add " (click)="toContasAdd()" >
       <ion-icon name="add">
       </ion-icon>
     </button>

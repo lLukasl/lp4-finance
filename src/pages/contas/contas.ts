@@ -1,5 +1,8 @@
+import { ContasDaoProvider } from './../../providers/contas-dao/contas-dao';
+import { ContasAddPage } from './../contas-add/contas-add';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 
 /**
  * Generated class for the ContasPage page.
@@ -15,25 +18,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContasPage {
 
-  public listContas = [
-    {
-      id:1,
-      descricao: "Alimentação"
-    },
-    {
-      id:2,
-      descricao: "Salario"
-    },
-    {
-      id:3,
-      descricao: "Saude"
-    }
-  ]
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public listContas: any[] = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public daoContas: ContasDaoProvider) {
+  this.getList();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContasPage');
+  }
+
+  toContasAdd(){
+    this.navCtrl.push(ContasAddPage);
+  };
+
+  getList(){
+    this.daoContas.getList().then((data:any)=>{
+      this.listContas = data;
+    }).catch((e) => console.error("Nao foi possivel encontrar os dados",e));
   }
 
 }

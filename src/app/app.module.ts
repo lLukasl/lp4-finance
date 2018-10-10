@@ -1,3 +1,4 @@
+import { ContasAddPageModule } from './../pages/contas-add/contas-add.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -10,6 +11,10 @@ import { HomePage } from '../pages/home/home';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { ContasPageModule } from '../pages/contas/contas.module';
 
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../providers/database/database';
+import { ContasDaoProvider } from '../providers/contas-dao/contas-dao';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -19,7 +24,8 @@ import { ContasPageModule } from '../pages/contas/contas.module';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IntroPageModule,
-    ContasPageModule
+    ContasPageModule,
+    ContasAddPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +35,10 @@ import { ContasPageModule } from '../pages/contas/contas.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SQLite,
+    DatabaseProvider,
+    ContasDaoProvider
   ]
 })
 export class AppModule {}
